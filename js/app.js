@@ -200,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateRemainingBalance();
   }
 
-  if (packToggle) {
-    packToggle.addEventListener('click', (e) => {
+  if (packPriceRow) {
+    packPriceRow.addEventListener('click', (e) => {
       state.packSelected = !state.packSelected;
       
       // Efecto de transición sutil
@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (earlyBirdToggle) {
-    earlyBirdToggle.addEventListener('click', (e) => {
+  if (valueReservaRow) {
+    valueReservaRow.addEventListener('click', (e) => {
       if (!state.packSelected) return; // No hacer nada si el pack no está seleccionado
       
       state.earlyBird = !state.earlyBird;
