@@ -555,15 +555,18 @@ body {
 
 .pricing-row {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-lg);
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px var(--spacing-lg);
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #packPriceRow, #valueReservaRow {
@@ -571,12 +574,12 @@ body {
 }
 
 .pricing-row.crossed {
-  opacity: 0.4;
+  opacity: 0.6;
   border-style: dashed;
 }
 
 .pricing-row.crossed:hover {
-  opacity: 0.55;
+  opacity: 0.75;
 }
 
 .pricing-row.highlight {
@@ -594,11 +597,12 @@ body {
   font-size: 13px;
   color: var(--text-muted);
   font-weight: 300;
+  max-width: 70%;
 }
 
 .pricing-label strong {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-primary);
   font-weight: 500;
   margin-bottom: 2px;
@@ -611,20 +615,21 @@ body {
 
 .strike {
   text-decoration: line-through;
-  opacity: 0.55;
-  color: #a84b3e !important;
+  opacity: 0.65;
+  color: #ff6b6b !important;
 }
 
 .pricing-value-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 4px;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-top: 0;
 }
 
 .pricing-value {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--text-primary);
   white-space: nowrap;
@@ -644,7 +649,7 @@ body {
 }
 
 .saving-tag {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 500;
   background: rgba(180, 137, 90, 0.12);
   color: var(--color-gold-light);
@@ -720,7 +725,7 @@ body {
   -webkit-appearance: none;
   width: 18px;
   height: 18px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-highlight);
   border-radius: 4px;
   background-color: var(--bg-primary);
   cursor: pointer;
@@ -730,6 +735,10 @@ body {
   justify-content: center;
   flex-shrink: 0;
   transition: all var(--transition-fast);
+}
+
+.payment-checkbox:hover {
+  border-color: var(--color-gold-light);
 }
 
 .payment-checkbox:checked {
@@ -1112,3 +1121,33 @@ body {
     display: none;
   }
 }
+
+/* Mobile Specific Adjustments (under 600px) */
+@media (max-width: 599px) {
+  .pricing-row {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  
+  .pricing-toggle-container {
+    gap: 8px;
+  }
+  
+  .pricing-label {
+    max-width: 60%;
+    font-size: 11px;
+  }
+  
+  .pricing-label strong {
+    font-size: 13px;
+  }
+  
+  .pricing-value-container {
+    gap: 6px;
+  }
+  
+  .pricing-value {
+    font-size: 1.3rem;
+  }
+}
+
