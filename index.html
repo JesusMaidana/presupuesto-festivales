@@ -125,73 +125,66 @@
           </div>
 
         </div>
+
+        <div class="day-total-row" id="individualPriceRow">
+          <div class="day-total-label">
+            <strong>Precio por jornada de tres días</strong>
+          </div>
+          <div class="day-total-value">$1.881.000</div>
+        </div>
       </section>
 
       <!-- INVESTMENT SECTION (WITH SIMULATOR) -->
       <section class="section reveal">
         <p class="section-label">Inversión y Beneficios</p>
 
-        <!-- Interactive Early Bird Simulator Switch -->
-        <div class="pricing-controls">
-          <div class="pricing-toggle-container active" id="earlyBirdToggle">
-            <div class="switch-control">
-              <div class="switch-handle"></div>
-            </div>
-            <span class="switch-label">Confirmar con Seña (Antes del 10 de Julio)</span>
-          </div>
-          <span class="pricing-badge">Precio Congelado 🌟</span>
-        </div>
-
         <div class="pricing-stack">
 
-          <div class="pricing-row crossed">
-            <div class="pricing-label">
-              <strong>Precio por jornada de tres días</strong>
-              Contratando cada fecha individualmente
-            </div>
-            <div class="pricing-value-container">
-              <div class="pricing-value strike">$1.881.000</div>
-            </div>
-          </div>
-
-          <div class="pricing-row">
-            <div class="pricing-label">
-              <strong>Paquete tres jornadas</strong>
-              Cobertura completa contratando el pack
+          <!-- Paquete tres jornadas (with Switch Control) -->
+          <div class="pricing-row" id="packPriceRow">
+            <div class="pricing-toggle-container" id="packToggle">
+              <div class="switch-control">
+                <div class="switch-handle"></div>
+              </div>
+              <div class="pricing-label" style="pointer-events: none;">
+                <strong>Paquete tres jornadas</strong>
+                Cobertura completa contratando el pack
+              </div>
             </div>
             <div class="pricing-value-container">
               <span class="saving-tag">Ahorro −$631.000</span>
-              <div class="pricing-value">$1.250.000</div>
+              <div class="pricing-value" id="packPriceValue">$1.250.000</div>
             </div>
           </div>
 
-          <div class="pricing-row highlight" id="valueReservaRow">
-            <div class="pricing-label">
-              <strong>Reserva anticipada</strong>
-              Confirmando fecha antes del 10 de julio
+          <!-- Reserva anticipada (with Switch Control) -->
+          <div class="pricing-row" id="valueReservaRow">
+            <div class="pricing-toggle-container" id="earlyBirdToggle">
+              <div class="switch-control">
+                <div class="switch-handle"></div>
+              </div>
+              <div class="pricing-label" style="pointer-events: none;">
+                <strong>Reserva anticipada</strong>
+                Señando con $110.000 antes del 10 de julio: valor congelado y fecha reservada
+              </div>
             </div>
             <div class="pricing-value-container">
-              <span class="saving-tag">Precio Congelado</span>
-              <div class="pricing-value">$1.150.000</div>
+
+              <div class="pricing-value" id="reservaPriceValue">$1.150.000</div>
             </div>
           </div>
 
-          <div class="pricing-row final">
-            <div class="pricing-label">
-              <strong>Inversión final</strong>
-              Cumpliendo el plan de pagos acordado
-            </div>
-            <div class="pricing-value-container">
-              <span class="saving-tag">Mejor Opción</span>
-              <div class="pricing-value" id="valueFinal">$1.000.000</div>
-            </div>
+          <!-- Mensaje de Beneficios -->
+          <div class="pricing-benefits-message" id="pricingBenefitsMsg">
+            <p><strong>Este año premiamos a quienes se adelantan.</strong></p>
+            <p>Cumplí con la fecha de pago de cada etapa y accedé a beneficios exclusivos para tu festival.</p>
           </div>
 
         </div>
       </section>
 
       <!-- PAYMENT PLAN SECTION -->
-      <section class="section reveal">
+      <section class="section reveal" id="paymentPlanSection">
 
         <div class="plan-header">
           <p class="section-label">Plan de pagos</p>
@@ -210,11 +203,12 @@
           </div>
           <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px;">
             Saldo pendiente estimado: <strong id="remainingBalance"
-              style="color: var(--text-primary); font-size: 13px;">$1.000.000</strong>
+              style="color: var(--text-primary); font-size: 13px;">$1.150.000</strong>
             (sobre un total de <span id="totalBalanceLabel"
-              style="color: var(--color-gold); font-weight: 500;">$1.000.000</span>)
+              style="color: var(--color-gold); font-weight: 500;">$1.150.000</span>)
           </p>
-          <p style="font-size: 10px; color: var(--text-muted); font-style: italic; margin-top: 2px;">
+          <p style="font-size: 12px; color: var(--color-gold-light); font-weight: 500; margin-top: 8px; display: flex; align-items: center; gap: 5px;">
+            <i class="ti ti-hand-click" style="font-size: 14px;"></i>
             Marca las casillas a continuación para simular los pagos realizados.
           </p>
         </div>
@@ -227,7 +221,7 @@
               <div class="plan-card-content">
                 <p class="plan-step">Cuota 1 (Seña)</p>
                 <p class="plan-fecha">Antes del 10 de julio</p>
-                <p class="plan-monto" id="cuota1Monto">$100.000</p>
+                <p class="plan-monto" id="cuota1Monto">$110.000</p>
                 <p class="plan-desc">Seña del 10% — Reserva las fechas de agenda y congela el presupuesto.</p>
               </div>
             </label>
@@ -239,8 +233,21 @@
               <div class="plan-card-content">
                 <p class="plan-step">Cuota 2</p>
                 <p class="plan-fecha">Hasta el 10 de agosto</p>
-                <p class="plan-monto" id="cuota2Monto">$400.000</p>
+                <p class="plan-monto" id="cuota2Monto">$460.000</p>
                 <p class="plan-desc">Completa el 50% de la cobertura del evento completo.</p>
+
+                <!-- Beneficios incluidos con esta cuota -->
+                <div class="cuota-benefits">
+                  <p class="cuota-benefits-title">Beneficios incluidos sin cargo:</p>
+                  <ul class="cuota-benefits-list">
+                    <li><i class="ti ti-gift"></i> Difusión del evento desde nuestras redes sociales</li>
+                    <li><i class="ti ti-gift"></i> Video resumen profesional de la muestra</li>
+                    <li><i class="ti ti-gift"></i> Reel especial adaptado para redes sociales</li>
+                    <li><i class="ti ti-gift"></i> Entrega prioritaria acelerada del material</li>
+                    <li><i class="ti ti-gift"></i> Cámara de video adicional sumada el domingo (resumen mejores
+                      momentos)</li>
+                  </ul>
+                </div>
               </div>
             </label>
           </div>
@@ -250,61 +257,11 @@
               <input type="checkbox" class="payment-checkbox" id="checkCuota3">
               <div class="plan-card-content">
                 <p class="plan-step">Saldo final</p>
-                <p class="plan-fecha">Un mes antes del evento</p>
-                <p class="plan-monto" id="saldoFinalMonto">$500.000</p>
+                <p class="plan-fecha">Una semana antes del evento</p>
+                <p class="plan-monto" id="saldoFinalMonto">$580.000</p>
                 <p class="plan-desc">Saldo restante previo al inicio de la cobertura fotográfica y fílmica.</p>
               </div>
             </label>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- BONUS INCLUDED SECTION -->
-      <section class="section reveal">
-        <p class="section-label">Bonus incluido sin cargo</p>
-        <div class="bonus-grid">
-
-          <div class="bonus-item card-glass">
-            <div class="bonus-icon-wrapper">
-              <i class="ti ti-movie" aria-hidden="true"></i>
-            </div>
-            <p class="bonus-text">Video resumen profesional de la muestra</p>
-          </div>
-
-          <div class="bonus-item card-glass">
-            <div class="bonus-icon-wrapper">
-              <i class="ti ti-player-record" aria-hidden="true"></i>
-            </div>
-            <p class="bonus-text">Backstage exclusivo de la escuela</p>
-          </div>
-
-          <div class="bonus-item card-glass">
-            <div class="bonus-icon-wrapper">
-              <i class="ti ti-brand-instagram" aria-hidden="true"></i>
-            </div>
-            <p class="bonus-text">Reel especial adaptado para redes sociales</p>
-          </div>
-
-          <div class="bonus-item card-glass">
-            <div class="bonus-icon-wrapper">
-              <i class="ti ti-video-plus" aria-hidden="true"></i>
-            </div>
-            <p class="bonus-text">Cámara de video adicional sumada el domingo</p>
-          </div>
-
-          <div class="bonus-item card-glass">
-            <div class="bonus-icon-wrapper">
-              <i class="ti ti-bolt" aria-hidden="true"></i>
-            </div>
-            <p class="bonus-text">Entrega prioritaria acelerada del material</p>
-          </div>
-
-          <div class="bonus-item card-glass">
-            <div class="bonus-icon-wrapper">
-              <i class="ti ti-speakerphone" aria-hidden="true"></i>
-            </div>
-            <p class="bonus-text">Difusión del evento desde nuestras redes sociales</p>
           </div>
 
         </div>

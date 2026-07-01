@@ -398,6 +398,42 @@ body {
   margin-top: 2px;
 }
 
+.day-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.day-total-row.crossed {
+  opacity: 0.45;
+  border-style: dashed;
+}
+
+.day-total-row.crossed .day-total-value {
+  text-decoration: line-through;
+  color: #a84b3e;
+}
+
+.day-total-label strong {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.day-total-value {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-gold-light);
+  transition: all var(--transition-fast);
+}
+
 /* ==========================================================================
    PRICING / INVESTMENT SECTION
    ========================================================================== */
@@ -416,10 +452,15 @@ body {
 
 .pricing-toggle-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   cursor: pointer;
   user-select: none;
+}
+
+.pricing-toggle-container .switch-control {
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .switch-label {
@@ -488,6 +529,28 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.pricing-benefits-message {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  background: rgba(180, 137, 90, 0.04);
+  border: 1px dashed var(--border-accent);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.pricing-benefits-message p {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.pricing-benefits-message p strong {
+  color: var(--color-gold-light);
+  font-size: 15px;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .pricing-row {
@@ -562,6 +625,7 @@ body {
   color: var(--text-primary);
   white-space: nowrap;
   transition: transform var(--transition-fast);
+  margin-left: auto;
 }
 
 .pricing-row.final .pricing-value {
@@ -665,16 +729,15 @@ body {
 }
 
 .payment-checkbox:checked {
-  background-color: var(--color-gold-dark);
-  border-color: var(--color-gold-dark);
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
 }
 
 .payment-checkbox:checked::after {
-  content: '\eb1c'; /* tabler-icon checkbox style code, using font unicode */
-  font-family: 'tabler-icons';
-  font-size: 12px;
-  color: var(--bg-primary);
-  font-weight: 900;
+  content: '✔';
+  font-size: 11px;
+  color: #10b981;
+  font-weight: bold;
 }
 
 .plan-card-content {
@@ -730,41 +793,47 @@ body {
 }
 
 /* ==========================================================================
-   BONUS INCLUDED SECTION (MOBILE-FIRST: 1 Column -> 2 Columns)
+   CUOTA BENEFITS LIST STYLES
    ========================================================================== */
-.bonus-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* Mobile Default */
-  gap: 10px;
+.cuota-benefits {
+  margin-top: var(--spacing-sm);
+  border-top: 1px dashed var(--border-color);
+  padding-top: var(--spacing-sm);
+  text-align: left;
 }
 
-.bonus-item {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 1rem 1.2rem;
-}
-
-.bonus-icon-wrapper {
+.cuota-benefits-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
   color: var(--color-gold);
-  font-size: 18px;
-  flex-shrink: 0;
-  margin-top: 2px;
-  background: rgba(180, 137, 90, 0.06);
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(180, 137, 90, 0.15);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
 }
 
-.bonus-text {
-  font-size: 13px;
+.cuota-benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+}
+
+.cuota-benefits-list li {
+  font-size: 11.5px;
   color: var(--text-secondary);
-  font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.cuota-benefits-list li i {
+  color: var(--color-gold-light);
+  font-size: 13px;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -990,8 +1059,12 @@ body {
     gap: var(--spacing-lg);
   }
   
+  .pricing-row .pricing-toggle-container {
+    max-width: 75%;
+  }
+
   .pricing-label {
-    max-width: 60%;
+    max-width: 100%;
   }
   
   .pricing-value-container {
